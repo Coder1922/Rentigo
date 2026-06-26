@@ -88,7 +88,7 @@ export default function AuthPortal({
   const [loginPassword, setLoginPassword] = useState('');
 
   // Admin inputs
-  const [adminEmail, setAdminEmail] = useState('admin@rentigo.com');
+  const [adminEmail, setAdminEmail] = useState('');
   const [adminPasscode, setAdminPasscode] = useState('');
 
   const clearMessages = () => {
@@ -126,25 +126,40 @@ export default function AuthPortal({
       return;
     }
 
+    if (!loginPassword) {
+      setErrorMsg('Please enter your account password.');
+      return;
+    }
+
     if (role === 'customer') {
       const user = usersList.find(
         u => u.email.toLowerCase().trim() === loginEmail.toLowerCase().trim() && u.role === 'customer'
       );
       if (user) {
+        // Strict Password Check
+        if (user.password && user.password !== loginPassword) {
+          setErrorMsg('Incorrect password. Please verify security parameters.');
+          return;
+        }
         setSuccessMsg(`Welcome back, ${user.name}! Logging you in Safely.`);
         setTimeout(() => onLoginCustomer(user), 1000);
       } else {
-        setErrorMsg('Invalid email or profile credentials. Use demo accounts for quick testing.');
+        setErrorMsg('No customer account found with this email. Please check or register.');
       }
     } else if (role === 'agency') {
       const agency = agenciesList.find(
         a => a.email.toLowerCase().trim() === loginEmail.toLowerCase().trim()
       );
       if (agency) {
+        // Strict Password Check
+        if (agency.password && agency.password !== loginPassword) {
+          setErrorMsg('Incorrect password. Please verify security parameters.');
+          return;
+        }
         setSuccessMsg(`Welcome, Partner ${agency.name}! Logging you into the Hub.`);
         setTimeout(() => onLoginAgency(agency), 1000);
       } else {
-        setErrorMsg('Agency profile not found with this email. Try elite demo accounts.');
+        setErrorMsg('No agency account found with this email. Please check or register.');
       }
     }
   };
@@ -158,11 +173,12 @@ export default function AuthPortal({
       return;
     }
 
-    if (adminPasscode === 'admin123' || adminPasscode === 'root') {
+    // Verify admin strictly using email admin@rentigo.com and code admin123
+    if (adminEmail.toLowerCase().trim() === 'admin@rentigo.com' && (adminPasscode === 'admin123' || adminPasscode === 'root')) {
       setSuccessMsg('Secured Access Verified. Booting RentiGo System Node.');
       setTimeout(() => onLoginAdmin(), 1000);
     } else {
-      setErrorMsg('Incorrect passcode entered. Check instructions or type root credentials.');
+      setErrorMsg('Unauthorized admin credentials. Please provide valid root credentials.');
     }
   };
 
@@ -172,17 +188,64 @@ export default function AuthPortal({
 
     const { name, email, phone, password, confirmPassword, dob, gender, license, city, zip, address, avatar } = customerForm;
 
+    // 1. Required fields check
     if (!name || !email || !phone || !password) {
       setErrorMsg('Please complete all required customer parameters.');
       return;
     }
 
+    // 2. Full Name validation
+    if (name.trim().length < 3) {
+      setErrorMsg('Full name must be at least 3 characters long.');
+      return;
+    }
+
+    // 3. Email format regex check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMsg('Please enter a valid email address (e.g., alex@example.com).');
+      return;
+    }
+
+    // 4. Phone number digits check (minimum 10 digits)
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10) {
+      setErrorMsg('Phone number must contain at least 10 digits.');
+      return;
+    }
+
+    // 5. Password matching check
     if (password !== confirmPassword) {
       setErrorMsg('Passwords do not match. Please verify character integrity.');
       return;
     }
 
-    // Check if email already registered
+    // 6. Password strength check
+    if (password.length < 6) {
+      setErrorMsg('Password must be at least 6 characters long.');
+      return;
+    }
+    if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
+      setErrorMsg('Password must contain at least one letter and one number for proper security.');
+      return;
+    }
+
+    // 7. Minimum age check (must be at least 18)
+    if (dob) {
+      const birthDate = new Date(dob);
+      const today = new Date();
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      if (age < 18) {
+        setErrorMsg('You must be at least 18 years old to register and rent vehicles.');
+        return;
+      }
+    }
+
+    // 8. Check if email already registered
     if (usersList.some(u => u.email.toLowerCase().trim() === email.toLowerCase().trim())) {
       setErrorMsg('This email is already registered as a Customer. Please log in.');
       return;
@@ -200,7 +263,8 @@ export default function AuthPortal({
       zip,
       address,
       role: 'customer',
-      avatar
+      avatar,
+      password // Strict password storage
     };
 
     setSuccessMsg('Customer profile verified and compiled. Storing state cache!');
@@ -215,16 +279,67 @@ export default function AuthPortal({
 
     const { name, ownerName, email, password, confirmPassword, phone, address, city, zip, fleetSize, taxId, tier, avatar } = agencyForm;
 
+    // 1. Required fields check
     if (!name || !ownerName || !email || !phone || !taxId || !address) {
       setErrorMsg('Please specify all enterprise registration metadata fields.');
       return;
     }
 
-    if (password !== confirmPassword) {
-      setErrorMsg('Passwords do not match.');
+    // 2. Agency Name validation
+    if (name.trim().length < 3) {
+      setErrorMsg('Agency / Brand Name must be at least 3 characters long.');
       return;
     }
 
+    // 3. Owner Name validation
+    if (ownerName.trim().length < 3) {
+      setErrorMsg('Owner Full Name must be at least 3 characters long.');
+      return;
+    }
+
+    // 4. Email format regex check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMsg('Please enter a valid enterprise email address.');
+      return;
+    }
+
+    // 5. Phone number validation
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10) {
+      setErrorMsg('Business phone number must contain at least 10 digits.');
+      return;
+    }
+
+    // 6. Password matching check
+    if (password !== confirmPassword) {
+      setErrorMsg('Passwords do not match. Please verify password integrity.');
+      return;
+    }
+
+    // 7. Password strength check
+    if (password.length < 6) {
+      setErrorMsg('Password must be at least 6 characters long.');
+      return;
+    }
+    if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
+      setErrorMsg('Password must contain at least one letter and one number for proper security.');
+      return;
+    }
+
+    // 8. Tax / GST validation
+    if (taxId.trim().length < 5) {
+      setErrorMsg('Tax ID/GST number must be at least 5 alphanumeric characters.');
+      return;
+    }
+
+    // 9. Street Address check
+    if (address.trim().length < 8) {
+      setErrorMsg('Please specify a complete business street address (at least 8 characters).');
+      return;
+    }
+
+    // 10. Check if agency email already registered
     if (agenciesList.some(a => a.email.toLowerCase().trim() === email.toLowerCase().trim())) {
       setErrorMsg('An agency with this email is already registered.');
       return;
@@ -243,7 +358,8 @@ export default function AuthPortal({
       taxId,
       tier,
       status: 'Verified', // Auto-approved for frictionless demo testing
-      avatar
+      avatar,
+      password // Strict password storage
     };
 
     setSuccessMsg('Agency credentials registered. Initializing Fleet Dashboard!');
@@ -765,6 +881,7 @@ export default function AuthPortal({
                 <button
                   type="button"
                   onClick={() => {
+                    setAdminEmail('admin@rentigo.com');
                     setAdminPasscode('admin123');
                     setSuccessMsg('Luxury Master Key Injected. Ready to command.');
                     setTimeout(() => clearMessages(), 2500);
@@ -780,16 +897,16 @@ export default function AuthPortal({
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center">
                   <label className="text-[10px] text-slate-500 uppercase tracking-widest block font-bold">Administrator Email Address</label>
-                  <span className="text-[8px] bg-blue-50 text-blue-800 border border-blue-200 font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Locked Node</span>
+                  <span className="text-[8px] bg-blue-50 text-blue-800 border border-blue-200 font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Root Access</span>
                 </div>
                 <div className="relative">
                   <input
                     type="email"
                     placeholder="Enter email"
+                    value={adminEmail}
                     onChange={e => setAdminEmail(e.target.value)}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3.5 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 text-xs font-semibold text-slate-800 transition-all"
                     required
-                    readOnly
                   />
                   <Mail className="w-4 h-4 text-blue-650/80 absolute left-3 top-1/2 -translate-y-1/2" />
                 </div>

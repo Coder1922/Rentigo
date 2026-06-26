@@ -11,6 +11,7 @@ export interface User {
   license?: string;
   role: 'admin' | 'agency' | 'customer';
   avatar?: string;
+  password?: string;
 }
 
 export interface Vehicle {
@@ -81,6 +82,7 @@ export interface Agency {
   tier: 'Premium' | 'Standard';
   status: 'Verified' | 'Pending' | 'Suspended';
   avatar?: string;
+  password?: string;
 }
 
 export interface PricingClass {

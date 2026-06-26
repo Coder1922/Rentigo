@@ -14,7 +14,8 @@ export const INITIAL_AGENCIES: Agency[] = [
     taxId: 'GSTIN-EM9022',
     tier: 'Premium',
     status: 'Verified',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDnJcTbfQCQYY3U5MFbPXAa1tHxFZKxJB82uqlp-B74V_0CTbrXtjz4_2XkrJtNKyTrb6yGJvPo_-ENIq6ZwTDmvqbdYzi1p2ZFU7FH53lnRhxPiSkXjQH2f830p1XT9EnBjRYeXbcr0MvWOLXnvjPRENaEbsLID-L2w--UIX7-Nmrevh4xw5doE1gSgJ1fsqpzf6Bt36QLBDK-n6Sx6TNSr6UrOoINUyQ0DMdfwXmveug94BGa6PEvqz1FXClnpwrwh5M9mYdGFdcI'
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDnJcTbfQCQYY3U5MFbPXAa1tHxFZKxJB82uqlp-B74V_0CTbrXtjz4_2XkrJtNKyTrb6yGJvPo_-ENIq6ZwTDmvqbdYzi1p2ZFU7FH53lnRhxPiSkXjQH2f830p1XT9EnBjRYeXbcr0MvWOLXnvjPRENaEbsLID-L2w--UIX7-Nmrevh4xw5doE1gSgJ1fsqpzf6Bt36QLBDK-n6Sx6TNSr6UrOoINUyQ0DMdfwXmveug94BGa6PEvqz1FXClnpwrwh5M9mYdGFdcI',
+    password: 'agency123'
   },
   {
     id: 'agency_2',
@@ -29,6 +30,7 @@ export const INITIAL_AGENCIES: Agency[] = [
     taxId: 'GSTIN-SV8841',
     tier: 'Premium',
     status: 'Verified',
+    password: 'robert123'
   },
   {
     id: 'agency_3',
@@ -43,6 +45,7 @@ export const INITIAL_AGENCIES: Agency[] = [
     taxId: 'GSTIN-BR2019',
     tier: 'Standard',
     status: 'Verified',
+    password: 'elena123'
   },
   {
     id: 'agency_4',
@@ -57,6 +60,7 @@ export const INITIAL_AGENCIES: Agency[] = [
     taxId: 'GSTIN-UL4412',
     tier: 'Premium',
     status: 'Verified',
+    password: 'marcus123'
   },
   {
     id: 'agency_5',
@@ -71,6 +75,7 @@ export const INITIAL_AGENCIES: Agency[] = [
     taxId: 'GSTIN-CR5510',
     tier: 'Standard',
     status: 'Verified',
+    password: 'sarah123'
   }
 ];
 
@@ -287,7 +292,8 @@ export const INITIAL_USERS: User[] = [
     email: 'marcus.m@rentigo.com',
     phone: '+1 (555) 019-2831',
     role: 'admin',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBwo8cjB8-UcS1Th3hvmvvwGLWloQ8QFlQvSoV9OHQqS8ZBQqrW-jor_tmNR80HxVuyQP8JxLcbFrSrwHP4S5hrradXiiIV42SuvP0BjAVNp1mC5PpKhSQZ1Bul4IEupgZtzSmb8J2IbCSx_w5BrQqMfqkVVHAYuDoPGubZ0KYj0mplzvXbj0EYOSCoRWGPpfRm-3fNwi3Lbndvlz157y7N0M-OS66F78gUSeTp_gDD2W3ghD3HHb3psZo8UCrjN-N9b0xyg64nxNrJ'
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBwo8cjB8-UcS1Th3hvmvvwGLWloQ8QFlQvSoV9OHQqS8ZBQqrW-jor_tmNR80HxVuyQP8JxLcbFrSrwHP4S5hrradXiiIV42SuvP0BjAVNp1mC5PpKhSQZ1Bul4IEupgZtzSmb8J2IbCSx_w5BrQqMfqkVVHAYuDoPGubZ0KYj0mplzvXbj0EYOSCoRWGPpfRm-3fNwi3Lbndvlz157y7N0M-OS66F78gUSeTp_gDD2W3ghD3HHb3psZo8UCrjN-N9b0xyg64nxNrJ',
+    password: 'admin123'
   },
   {
     id: 'user_2',
@@ -295,7 +301,8 @@ export const INITIAL_USERS: User[] = [
     email: 's.kincaid@agency-lux.com',
     phone: '+1 (555) 488-2041',
     role: 'agency',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDfoe58PB6L8yhBxUYJn41xf2QT_tTjaPL05a_WJLuYZAiD0hJWWFH3OE6zwhXyQBLmVa4qyupopNDvsdKdLGaJRScv39Xn8ugoc0hKkIjD5OI3Re2p3Y0-EDWbv_0vyFRu8jMMQfNMOi6iUTSGM5MWnSWtz0U3pQleP9IMm6osNTKsCdmR8t8UC_UqS5ryjNNsQvChsdCOsVPyxiYd8ik3-GFFj4yXbya-w4z6VX3z90IqMLSbQeASRrli5cFSaGTFfdzoNEuuj58r'
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDfoe58PB6L8yhBxUYJn41xf2QT_tTjaPL05a_WJLuYZAiD0hJWWFH3OE6zwhXyQBLmVa4qyupopNDvsdKdLGaJRScv39Xn8ugoc0hKkIjD5OI3Re2p3Y0-EDWbv_0vyFRu8jMMQfNMOi6iUTSGM5MWnSWtz0U3pQleP9IMm6osNTKsCdmR8t8UC_UqS5ryjNNsQvChsdCOsVPyxiYd8ik3-GFFj4yXbya-w4z6VX3z90IqMLSbQeASRrli5cFSaGTFfdzoNEuuj58r',
+    password: 'agency123'
   },
   {
     id: 'user_3',
@@ -303,7 +310,8 @@ export const INITIAL_USERS: User[] = [
     email: 'd.ling@gmail.com',
     phone: '+1 (555) 712-0399',
     role: 'customer',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCSvprKEBGKRmJv-rlF3Nzotsmpq6L2OHo86MGTZzjWoY3O7eH8b2iggG7gacI6PCq_9OXmBC0Qphg1taPlQ_4C3WHi-KjSC-uXfMddFCt9qW3avCDIn0ZCL3QzdBBDqu-8zRUADO13kES3A42mpOa9X7DPbLOgxce0kYO6zn10-NfmxhzNIL6dy426HZ0p24Oe0OZOaT0s4Q8N8-4TGzgznywkP0dNq8AszrcxVGtcUOT18sRFCLk9yLPo7ETHk3uUM4o9yYWH5cXA'
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCSvprKEBGKRmJv-rlF3Nzotsmpq6L2OHo86MGTZzjWoY3O7eH8b2iggG7gacI6PCq_9OXmBC0Qphg1taPlQ_4C3WHi-KjSC-uXfMddFCt9qW3avCDIn0ZCL3QzdBBDqu-8zRUADO13kES3A42mpOa9X7DPbLOgxce0kYO6zn10-NfmxhzNIL6dy426HZ0p24Oe0OZOaT0s4Q8N8-4TGzgznywkP0dNq8AszrcxVGtcUOT18sRFCLk9yLPo7ETHk3uUM4o9yYWH5cXA',
+    password: 'customer123'
   },
   {
     id: 'user_4',
@@ -311,7 +319,8 @@ export const INITIAL_USERS: User[] = [
     email: 'robert.j@agency-elite.com',
     phone: '+1 (555) 655-4299',
     role: 'agency',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBXcCUOQyxskpPP_wfJ0STZz4N0QemaAGUJhkZ1ijD3uHMZ8FbtwdW1uca9g1kL_x6G2s5qI-Ly8YWzbjsDSDkSvyisRyiAJoyiEVK8kjyLsPwiriQRYtJYCOAvLDDA-uFpH1U1y0sK4TeHVYLy6DPaeq9UJe_OT4fexvS8gHLzS8-kz7A8D7sNe5ykIRfIyayLOoS3lqt11kJj-aU4l_6I5Y-eewzkzlERijhf43ukQdN-FUAigqj0tK5BUNZafRvKmXO4NQ1kPLJ_'
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBXcCUOQyxskpPP_wfJ0STZz4N0QemaAGUJhkZ1ijD3uHMZ8FbtwdW1uca9g1kL_x6G2s5qI-Ly8YWzbjsDSDkSvyisRyiAJoyiEVK8kjyLsPwiriQRYtJYCOAvLDDA-uFpH1U1y0sK4TeHVYLy6DPaeq9UJe_OT4fexvS8gHLzS8-kz7A8D7sNe5ykIRfIyayLOoS3lqt11kJj-aU4l_6I5Y-eewzkzlERijhf43ukQdN-FUAigqj0tK5BUNZafRvKmXO4NQ1kPLJ_',
+    password: 'agency123'
   },
   {
     id: 'user_5',
@@ -325,7 +334,8 @@ export const INITIAL_USERS: User[] = [
     city: 'New York',
     zip: '10001',
     license: 'ABC123456789',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDUHmr1LDxHwY9lfi2-2ogj0MCOzeO9abyzvIo8ENgrfX1CfFhAMJ1ASKkbmNg_GfAOoES6CNaYrCUnGITKWeOVVS5qembWeY2eBXF1wC_8L3JgyHdpn2_zrels5QncFGAJv-8gEq_1ovtM15Xa3HQ9fNuNPTiGy4yFqOwjGGVo0QOShWLhg-TFZ6YxjMZge2zegjUgW1x6glYD5mzpuqf-keuzuC-15ALR9GIJMqHaPCH5mzDvCDD-YF8a-c3hq6-iybiM3zSF1Y6k'
+    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDUHmr1LDxHwY9lfi2-2ogj0MCOzeO9abyzvIo8ENgrfX1CfFhAMJ1ASKkbmNg_GfAOoES6CNaYrCUnGITKWeOVVS5qembWeY2eBXF1wC_8L3JgyHdpn2_zrels5QncFGAJv-8gEq_1ovtM15Xa3HQ9fNuNPTiGy4yFqOwjGGVo0QOShWLhg-TFZ6YxjMZge2zegjUgW1x6glYD5mzpuqf-keuzuC-15ALR9GIJMqHaPCH5mzDvCDD-YF8a-c3hq6-iybiM3zSF1Y6k',
+    password: 'demo123'
   }
 ];
 

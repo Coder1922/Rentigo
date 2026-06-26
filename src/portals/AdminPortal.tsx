@@ -566,17 +566,19 @@ export default function AdminPortal({
                         const maxVal = timeframe === 'week' ? 1100 : timeframe === 'month' ? 1100 : 1280;
                         const pct = (val / maxVal) * 100;
                         return (
-                          <div key={idx} className="flex-grow flex flex-col items-center group relative gap-1.5">
+                          <div key={idx} className="flex-grow flex flex-col items-center group relative gap-1.5 h-full justify-end">
                             {/* Hover Tooltip tooltip */}
                             <div className="absolute bottom-full mb-2 bg-slate-950 text-white font-mono text-[9px] font-bold px-1.5 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-lg pointer-events-none">
                               ${(val * baseMultiplier).toLocaleString()}
                             </div>
-                            {/* Bar segment */}
-                            <div 
-                              className="w-full bg-gradient-to-t from-indigo-500 to-indigo-600 group-hover:to-indigo-400 rounded-t-lg transition-all duration-500"
-                              style={{ height: `${pct}%` }}
-                            ></div>
-                            <span className="text-[9px] font-black text-slate-400 font-mono">
+                            {/* Bar segment container */}
+                            <div className="w-full h-32 flex items-end relative">
+                              <div 
+                                className="w-full bg-gradient-to-t from-indigo-500 to-indigo-600 group-hover:to-indigo-400 rounded-t-lg transition-all duration-500"
+                                style={{ height: `${pct}%` }}
+                              ></div>
+                            </div>
+                            <span className="text-[9px] font-black text-slate-400 font-mono shrink-0">
                               {timeframe === 'week' ? ['M', 'T', 'W', 'T', 'F', 'S', 'S'][idx] : timeframe === 'month' ? `W${idx+1}` : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][idx]}
                             </span>
                           </div>
