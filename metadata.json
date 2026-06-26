@@ -1,0 +1,6 @@
+{
+  "name": "Vehicle Rental Management System",
+  "description": "A centralized, web-based platform that enables users to rent two-wheelers and four-wheelers on a daily, weekly, or monthly basis, while allowing rental agencies to efficiently manage vehicle availability, pricing, and bookings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
