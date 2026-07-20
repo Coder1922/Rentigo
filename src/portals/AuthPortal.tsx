@@ -865,34 +865,6 @@ export default function AuthPortal({
           {role === 'admin' && (
             <form onSubmit={handleAdminSubmit} className="space-y-6 font-semibold text-slate-700 text-xs">
               
-              {/* Prestige Credentials Quick Auto-Fill Card */}
-              <div className="bg-gradient-to-br from-blue-50/50 via-white to-white border border-blue-200 p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm relative overflow-hidden">
-                {/* Diagonal subtle blue line */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-200/20 to-transparent pointer-events-none" />
-                
-                <div className="text-left space-y-1 relative z-10">
-                  <p className="font-extrabold text-blue-850 text-xs flex items-center gap-1.5 tracking-wide uppercase">
-                    <Key className="w-3.5 h-3.5 text-blue-650" />
-                    Prestige Demo Passkey
-                  </p>
-                  <p className="text-[10px] text-slate-500 font-medium">Auto-fill verified administrator credentials.</p>
-                </div>
-                
-                <button
-                  type="button"
-                  onClick={() => {
-                    setAdminEmail('admin@rentigo.com');
-                    setAdminPasscode('admin123');
-                    setSuccessMsg('Luxury Master Key Injected. Ready to command.');
-                    setTimeout(() => clearMessages(), 2500);
-                  }}
-                  className="bg-gradient-to-r from-blue-500 to-blue-650 hover:from-blue-450 hover:to-blue-550 text-white text-[10px] font-black px-5 py-2.5 rounded-xl border border-blue-400/20 transition-all duration-300 cursor-pointer flex items-center gap-1.5 shadow-[0_4px_12px_rgba(37,99,235,0.15)] hover:shadow-[0_6px_18px_rgba(37,99,235,0.3)] uppercase tracking-wider relative z-10"
-                >
-                  <Sparkles className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '3s' }} />
-                  Auto-Fill Keys
-                </button>
-              </div>
-
               {/* Input Fields */}
               <div className="space-y-1.5">
                 <div className="flex justify-between items-center">
