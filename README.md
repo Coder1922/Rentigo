@@ -2,11 +2,11 @@
   <h1>🚗 Rentigo - Car Rental System</h1>
   <p><strong>The Modern, Multi-Hub Car Rental Management Platform</strong></p>
 
-  <br />
   <strong>🚀 <a href="https://rentigo-sooty.vercel.app/">View Live Demo</a> 🚀</strong>
   <br />
   <br />
-  
+
+  [![Google AI Studio](https://img.shields.io/badge/Google_AI_Studio-4285F4?style=flat&logo=google)](https://aistudio.google.com/)
   [![React](https://img.shields.io/badge/React-TypeScript-blue.svg?style=flat&logo=react)](https://react.dev/)
   [![Vite](https://img.shields.io/badge/Vite-B73BFE.svg?style=flat&logo=vite)](https://vitejs.dev/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC.svg?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
